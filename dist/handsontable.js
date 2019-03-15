@@ -25,7 +25,7 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  * 
  * Version: 6.2.2
- * Release date: 19/12/2018 (built at 15/03/2019 16:36:17)
+ * Release date: 19/12/2018 (built at 15/03/2019 16:48:18)
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -29735,7 +29735,7 @@ Handsontable.DefaultSettings = _defaultSettings.default;
 Handsontable.EventManager = _eventManager.default;
 Handsontable._getListenersCounter = _eventManager.getListenersCounter; // For MemoryLeak tests
 
-Handsontable.buildDate = "15/03/2019 16:36:17";
+Handsontable.buildDate = "15/03/2019 16:48:18";
 Handsontable.packageName = "handsontable";
 Handsontable.version = "6.2.2";
 var baseVersion = "";
@@ -58293,8 +58293,8 @@ function (_BasePlugin) {
       this.mergedCellsCollection = new _cellsCollection.default(this);
       this.autofillCalculations = new _autofill.default(this);
       this.selectionCalculations = new _selection.default(this);
-      this.addHook('beforeInit', function () {
-        return _this2.onBeforeInit.apply(_this2, arguments);
+      this.addHook('beforeInitWalkontable', function () {
+        return _this2.onBeforeInitWalkontable.apply(_this2, arguments);
       });
       this.addHook('beforeKeyDown', function () {
         return _this2.onBeforeKeyDown.apply(_this2, arguments);
@@ -58767,8 +58767,8 @@ function (_BasePlugin) {
      */
 
   }, {
-    key: "onBeforeInit",
-    value: function onBeforeInit() {
+    key: "onBeforeInitWalkontable",
+    value: function onBeforeInitWalkontable() {
       this.generateFromSettings(this.hot.getSettings().mergeCells); // this.hot.render();
     }
     /**

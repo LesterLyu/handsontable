@@ -93,7 +93,7 @@ class MergeCells extends BasePlugin {
     this.autofillCalculations = new AutofillCalculations(this);
     this.selectionCalculations = new SelectionCalculations(this);
 
-    this.addHook('afterInit', (...args) => this.onAfterInit(...args));
+    this.addHook('beforeInit', (...args) => this.onBeforeInit(...args));
     this.addHook('beforeKeyDown', (...args) => this.onBeforeKeyDown(...args));
     this.addHook('modifyTransformStart', (...args) => this.onModifyTransformStart(...args));
     this.addHook('afterModifyTransformStart', (...args) => this.onAfterModifyTransformStart(...args));
@@ -499,7 +499,7 @@ class MergeCells extends BasePlugin {
    *
    * @private
    */
-  onAfterInit() {
+  onBeforeInit() {
     this.generateFromSettings(this.hot.getSettings().mergeCells);
     // this.hot.render();
   }

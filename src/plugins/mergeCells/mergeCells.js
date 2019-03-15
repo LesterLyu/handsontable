@@ -205,9 +205,9 @@ class MergeCells extends BasePlugin {
       // remove 'empty' setting objects, caused by improper merge range declarations
       populationArgumentsList = populationArgumentsList.filter(value => value !== true);
 
-      const bulkPopulationData = this.getBulkCollectionData(populationArgumentsList);
-
-      this.hot.populateFromArray(...bulkPopulationData);
+      // prevent re-render, since I do not use hot.getDataAtCell, remove this won't make any consequences
+      // const bulkPopulationData = this.getBulkCollectionData(populationArgumentsList);
+      // this.hot.populateFromArray(...bulkPopulationData);
     }
   }
 

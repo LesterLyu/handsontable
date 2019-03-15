@@ -501,7 +501,7 @@ class MergeCells extends BasePlugin {
    */
   onAfterInit() {
     this.generateFromSettings(this.hot.getSettings().mergeCells);
-    this.hot.render();
+    // this.hot.render();
   }
 
   /**

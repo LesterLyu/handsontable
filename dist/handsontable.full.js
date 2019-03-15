@@ -25,7 +25,7 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  * 
  * Version: 6.2.2
- * Release date: 19/12/2018 (built at 15/03/2019 15:35:50)
+ * Release date: 19/12/2018 (built at 15/03/2019 16:07:33)
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -62460,7 +62460,7 @@ Handsontable.DefaultSettings = _defaultSettings.default;
 Handsontable.EventManager = _eventManager.default;
 Handsontable._getListenersCounter = _eventManager.getListenersCounter; // For MemoryLeak tests
 
-Handsontable.buildDate = "15/03/2019 15:35:50";
+Handsontable.buildDate = "15/03/2019 16:07:33";
 Handsontable.packageName = "handsontable";
 Handsontable.version = "6.2.2";
 var baseVersion = "";
@@ -92876,8 +92876,6 @@ function (_BasePlugin) {
       var _this3 = this;
 
       if (Array.isArray(settings)) {
-        var _this$hot;
-
         var populationArgumentsList = [];
         (0, _array.arrayEach)(settings, function (setting) {
           if (!_this3.validateSetting(setting)) {
@@ -92892,10 +92890,9 @@ function (_BasePlugin) {
 
         populationArgumentsList = populationArgumentsList.filter(function (value) {
           return value !== true;
-        });
-        var bulkPopulationData = this.getBulkCollectionData(populationArgumentsList);
-
-        (_this$hot = this.hot).populateFromArray.apply(_this$hot, _toConsumableArray(bulkPopulationData));
+        }); // prevent re-render, since I do not use hot.getDataAtCell, remove this won't make any consequences
+        // const bulkPopulationData = this.getBulkCollectionData(populationArgumentsList);
+        // this.hot.populateFromArray(...bulkPopulationData);
       }
     }
     /**
@@ -92909,11 +92906,11 @@ function (_BasePlugin) {
   }, {
     key: "getBulkCollectionData",
     value: function getBulkCollectionData(populationArgumentsList) {
-      var _this$hot2;
+      var _this$hot;
 
       var populationDataRange = this.getBulkCollectionDataRange(populationArgumentsList);
 
-      var dataAtRange = (_this$hot2 = this.hot).getData.apply(_this$hot2, _toConsumableArray(populationDataRange));
+      var dataAtRange = (_this$hot = this.hot).getData.apply(_this$hot, _toConsumableArray(populationDataRange));
 
       var newDataAtRange = dataAtRange.splice(0);
       (0, _array.arrayEach)(populationArgumentsList, function (mergedCellArguments) {

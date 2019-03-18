@@ -25,7 +25,7 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  * 
  * Version: 6.2.2
- * Release date: 19/12/2018 (built at 15/03/2019 16:48:18)
+ * Release date: 19/12/2018 (built at 18/03/2019 10:58:39)
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -29735,7 +29735,7 @@ Handsontable.DefaultSettings = _defaultSettings.default;
 Handsontable.EventManager = _eventManager.default;
 Handsontable._getListenersCounter = _eventManager.getListenersCounter; // For MemoryLeak tests
 
-Handsontable.buildDate = "15/03/2019 16:48:18";
+Handsontable.buildDate = "18/03/2019 10:58:39";
 Handsontable.packageName = "handsontable";
 Handsontable.version = "6.2.2";
 var baseVersion = "";
@@ -58262,6 +58262,7 @@ function (_BasePlugin) {
      */
 
     _this.selectionCalculations = null;
+    _this.settings = null;
     return _this;
   }
   /**
@@ -58382,6 +58383,8 @@ function (_BasePlugin) {
     key: "updatePlugin",
     value: function updatePlugin() {
       var settings = this.hot.getSettings().mergeCells;
+      if (settings === this.settings) return;
+      this.settings = settings;
       this.disablePlugin();
       this.enablePlugin();
       this.generateFromSettings(settings);

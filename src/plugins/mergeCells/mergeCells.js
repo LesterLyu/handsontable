@@ -69,6 +69,7 @@ class MergeCells extends BasePlugin {
      * @type {SelectionCalculations}
      */
     this.selectionCalculations = null;
+    this.settings = null;
   }
 
   /**
@@ -133,7 +134,8 @@ class MergeCells extends BasePlugin {
    */
   updatePlugin() {
     const settings = this.hot.getSettings().mergeCells;
-
+    if (settings === this.settings) return;
+    this.settings = settings;
     this.disablePlugin();
     this.enablePlugin();
 
